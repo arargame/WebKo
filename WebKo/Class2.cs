@@ -6,5 +6,6 @@ namespace WebKo
 {
     class Class2
     {
+        public string Name { get; set; }
     }
 }
