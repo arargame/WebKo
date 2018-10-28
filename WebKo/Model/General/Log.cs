@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebKo
+namespace WebKo.Model.General
 {
-    class Class2
+    public class Log
     {
-        public string Name { get; set; }
     }
 }

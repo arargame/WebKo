@@ -1,0 +1,4 @@
+﻿- BaseObject.cs => RecordDate UpdateDate alan bazlı loglama gerekiyor
+- BaseObject.cs = >Platform nesnesine ihtiyaç var
+- Örneğin UserManager gibi manager sınıfları yap static fonksiyonlar ile currentuser'i getir
+-Hafızada tutulan loglar ve persistent loglar olacak nesneyi izlemek için
