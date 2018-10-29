@@ -6,16 +6,9 @@ using System.Text;
 
 namespace WebKo.Model.General
 {
-    public interface IHasCode
-    {
-        string Code { get; set; }
-    }
-
-    public interface IBaseObject
+    public interface IPersistent
     {
         Guid Id { get; set; }
-
-        //string LogId { get; set; }
 
         string Name { get; set; }
 
@@ -26,6 +19,22 @@ namespace WebKo.Model.General
         string Description { get; set; }
 
         bool IsValid { get; set; }
+    }
+
+    public interface IHasCode
+    {
+        string Code { get; set; }
+    }
+
+
+
+    public interface IBaseObject : IPersistent
+    {
+        
+
+        //string LogId { get; set; }
+
+      
 
         //string RecorderInfo { get; set; }
 
@@ -62,7 +71,7 @@ namespace WebKo.Model.General
         //IBaseObject Load();
     }
 
-    public abstract class BaseObject : IBaseObject
+    public abstract class BaseObject : IPersistent
     {
         #region Properties
         [Key]
@@ -114,6 +123,9 @@ namespace WebKo.Model.General
         {
             return IsValid;
         }
+
+
+
         #endregion
     }
 }

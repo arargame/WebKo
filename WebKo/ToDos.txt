@@ -2,3 +2,5 @@
 - BaseObject.cs = >Platform nesnesine ihtiyaç var
 - Örneğin UserManager gibi manager sınıfları yap static fonksiyonlar ile currentuser'i getir
 -Hafızada tutulan loglar ve persistent loglar olacak nesneyi izlemek için
+-Dosya okuma yazma sınıfı yap
+-Logları adonet inet yazdır eğer hata olursa try catch içinde dosyaya yaz

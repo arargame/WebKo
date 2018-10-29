@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebKo", "WebKo\WebKo.csproj", "{8E5760CF-1B60-4D11-ADD2-76D02E69566A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{B4E77C68-CCAD-42E2-B14D-7CE1BBAF7929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{B4E77C68-CCAD-42E2-B14D-7CE1BBAF7929}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
