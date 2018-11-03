@@ -4,7 +4,6 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
 using System.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 using WebKo.Model.General;
@@ -34,6 +33,15 @@ namespace Reporting.Core.Data
         IDbConnection Disconnect();
     }
 
+    public class ConnectionString
+    {
+        public string Key { get; set; }
+
+        public string Value { get; set; }
+
+        public static List<ConnectionString> List = new List<ConnectionString>();
+    }
+
     public abstract class CustomConnection : BaseObject , IDbConnection
     {
         public CustomConnection(string provider,string connectionString)
@@ -57,11 +65,11 @@ namespace Reporting.Core.Data
         {
             try
             {
-                ConnectingString = ConfigurationManager.AppSettings[connectionStringName];
+                ConnectingString = ConnectionString.List.SingleOrDefault(cs => cs.Key == connectionStringName).Value;
             }
             catch (Exception ex)
             {
-                throw;
+                Log.Create(new Log(,));
             }
 
             return this;
