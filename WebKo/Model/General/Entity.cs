@@ -3,13 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using WebKo.Model.Tracing;
 
 namespace WebKo.Model.General
 {
     public interface IPersistent
     {
         Guid Id { get; set; }
+        byte[] RowVersion { get; set; }
+    }
 
+
+    public interface IHasCode
+    {
+        string Code { get; set; }
+    }
+
+    public interface IEntity :IPersistent
+    {
         string Name { get; set; }
 
         string FullName { get; set; }
@@ -19,22 +30,10 @@ namespace WebKo.Model.General
         string Description { get; set; }
 
         bool IsValid { get; set; }
-    }
-
-    public interface IHasCode
-    {
-        string Code { get; set; }
-    }
-
-
-
-    public interface IBaseObject : IPersistent
-    {
-        
 
         //string LogId { get; set; }
 
-      
+
 
         //string RecorderInfo { get; set; }
 
@@ -45,6 +44,7 @@ namespace WebKo.Model.General
         //DateTime? UpdateDate { get; set; }
 
         ICollection<Log> Logs { get; set; }
+        List<EntityTracer> EntityTracers { get; set; }
 
         //string Platform { get; set; }
 
@@ -53,6 +53,7 @@ namespace WebKo.Model.General
         //void AddModelError(params ModelError[] modelError);
 
         bool CheckIfItIsValid();
+        void AddEntityTracer(EntityTracer entityTracer);
 
         //Employee CurrentEmployee { get; set; }
 
@@ -71,7 +72,8 @@ namespace WebKo.Model.General
         //IBaseObject Load();
     }
 
-    public abstract class BaseObject : IPersistent
+
+    public abstract class Entity : IEntity
     {
         #region Properties
         [Key]
@@ -89,6 +91,9 @@ namespace WebKo.Model.General
 
         public bool IsValid { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public virtual string DisplayName
         {
             get
@@ -100,21 +105,26 @@ namespace WebKo.Model.General
 
         #region Collections
         public virtual ICollection<Log> Logs { get; set; }
+
+        [NotMapped]
+        public List<EntityTracer> EntityTracers { get; set; }
         #endregion
 
         #region Constructor
-        public BaseObject()
+        public Entity()
         {
             Initialize();
         }
         #endregion
 
         #region Functions
-        public virtual BaseObject Initialize()
+        public virtual Entity Initialize()
         {
             IsValid = true;
 
             Id = Guid.NewGuid();
+
+            EntityTracers = new List<EntityTracer>();
 
             return this;
         }
@@ -123,7 +133,10 @@ namespace WebKo.Model.General
         {
             return IsValid;
         }
-
+        public void AddEntityTracer(EntityTracer entityTracer)
+        {
+            EntityTracers.Add(entityTracer);
+        }
 
 
         #endregion

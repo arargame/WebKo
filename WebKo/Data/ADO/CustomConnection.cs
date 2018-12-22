@@ -42,7 +42,7 @@ namespace Reporting.Core.Data
         public static List<ConnectionString> List = new List<ConnectionString>();
     }
 
-    public abstract class CustomConnection : BaseObject , IDbConnection
+    public abstract class CustomConnection : Entity , IDbConnection
     {
         public CustomConnection(string provider,string connectionString)
         {

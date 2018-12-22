@@ -12,9 +12,9 @@ namespace WebKo.Model.General
         Warning
     }
 
-    public class Log : BaseObject
+    public class Log : Entity
     {
-        public virtual BaseObject BaseObject { get; set; }
+        public virtual Entity BaseObject { get; set; }
 
         public string Category { get; set; }
 
@@ -37,8 +37,10 @@ namespace WebKo.Model.General
            // BaseObject = BaseObject. ?? null;
         }
 
+
         public Log(string description, LogType logType = LogType.Error, string objectId = null)
         {
+            //Hatanın hangi sınıf ve fonksiyondan geldiği yakalanıyor
             var methodBase = new StackTrace().GetFrame(1).GetMethod();
 
             Category = methodBase.DeclaringType.Name;
