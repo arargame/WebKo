@@ -15,7 +15,7 @@ namespace WebKo.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(CustomConnection.);
+            //optionsBuilder.UseSqlServer(CustomConnection.);
         }
     }
 }

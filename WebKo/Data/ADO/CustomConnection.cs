@@ -69,7 +69,7 @@ namespace Reporting.Core.Data
             }
             catch (Exception ex)
             {
-                Log.Create(new Log(,));
+                //Log.Create(new Log(,));
             }
 
             return this;

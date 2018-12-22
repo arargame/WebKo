@@ -1,6 +1,10 @@
 ﻿- BaseObject.cs => RecordDate UpdateDate alan bazlı loglama gerekiyor
 - BaseObject.cs = >Platform nesnesine ihtiyaç var
 - Örneğin UserManager gibi manager sınıfları yap static fonksiyonlar ile currentuser'i getir
--Hafızada tutulan loglar ve persistent loglar olacak nesneyi izlemek için
++Hafızada tutulan loglar ve persistent loglar olacak nesneyi izlemek için(EntityTracer.cs kısmında işlendi)
 -Dosya okuma yazma sınıfı yap
 -Logları adonet inet yazdır eğer hata olursa try catch içinde dosyaya yaz
+-Logları kullanıcı ile ilişkilendirmek gerekiyor
+-Loglar ado.net üzreine oluşacak sıkıntılardada dosyaya yazması gerekiyor
+-Kullanıcının local culture info sunu kruma buna göre bişeyler inşa etme,başta belirlenebilmesi ardından değiştirlebilir bir yapısı olması lazım
+-kaydı kim güncelledi kim sildi bilgisi lazım,entitytracer da yapılabilir mi ?

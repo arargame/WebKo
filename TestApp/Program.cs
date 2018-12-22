@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using WebKo.Model.Settings;
+using WebKo.Settings;
 
 namespace TestApp
 {
@@ -12,7 +13,11 @@ namespace TestApp
         {
             Console.WriteLine("Hello World!");
 
+            var x  = CultureInfo.CurrentCulture;
+
             AppConfiguration.SetUp();
+
+            var list = JsonConfigurationProvider.GetList;
 
             Console.ReadLine();
         }

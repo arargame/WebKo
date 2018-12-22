@@ -50,6 +50,17 @@ namespace WebKo.Model.General
             //ObjectId = objectId;
         }
 
+        public static void Create(string description, LogType logType = LogType.Error, Guid? objectId = null)
+        {
+            var methodBase = new StackTrace().GetFrame(1).GetMethod();
+
+            var category = methodBase.DeclaringType.Name;
+            var name = methodBase.Name;
+
+            Log log = new Log(category, name, description, logType, objectId);
+
+            Create(log);
+        }
         public static void Create(Log log)
         {
             //new Task(() =>
