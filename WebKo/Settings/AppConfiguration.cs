@@ -20,16 +20,38 @@ namespace WebKo.Settings
 
             //Console.WriteLine(configuration.GetSection("ConnectionStrings").GetChildren().Where(c => c.Key == "MsSqlConnectionString").FirstOrDefault().Value);
 
-            var list = configuration.GetChildren().Select(c => new
-            {
-                Key = c.Key,
-                Value = c.Value
-            });
+            var provider = configuration.Providers.FirstOrDefault();
+            
 
-            foreach (var item in list)
+
+            var categoryList = configuration.GetChildren().Select(c => new
             {
-                JsonConfigurationProvider.SetValue(item.Key, item.Value);
+                Name = c.Key
+            }).ToList();
+
+            foreach (var category in categoryList)
+            {
+                var child = configuration.GetSection(category.Name).GetChildren();
+
+                if (child.Count() > 0)
+                {
+                    foreach (var item in child)
+                    {
+                        JsonConfigurationSection.SetValue(item.Key, item.Value, category.Name);
+                    }
+                }
+                else
+                {
+                    var configurationSection = configuration.GetSection(category.Name);
+
+                    JsonConfigurationSection.SetValue(configurationSection.Key, configurationSection.Value, category.Name);
+                }
             }
+
+            //foreach (var item in list)
+            //{
+            //    JsonConfigurationProvider.SetValue(item.Key, item.Value);
+            //}
 
             foreach (var item in configuration.GetSection("ConnectionStrings").GetChildren())
             {

@@ -17,7 +17,7 @@ namespace TestApp
 
             AppConfiguration.SetUp();
 
-            var list = JsonConfigurationProvider.GetList;
+            var list = JsonConfigurationSection.GetList;
 
             Console.ReadLine();
         }

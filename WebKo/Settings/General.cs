@@ -12,7 +12,7 @@ namespace WebKo.Settings
         {
             get
             {
-                return CultureInfo.GetCultureInfo(JsonConfigurationProvider.GetValue("DefaultCultureName")) ?? CultureInfo.GetCultureInfo("en-us");
+                return CultureInfo.GetCultureInfo(JsonConfigurationSection.GetValue("DefaultCultureName")) ?? CultureInfo.GetCultureInfo("en-us");
             }
         }
     }
