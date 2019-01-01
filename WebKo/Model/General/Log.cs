@@ -20,6 +20,9 @@ namespace WebKo.Model.General
 
         public LogType LogType { get; set; }
 
+
+        public Log() { }
+
         /// <summary>
         /// Log constructor
         /// </summary>

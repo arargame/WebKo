@@ -6,6 +6,13 @@ using System.Linq;
 
 namespace WebKo.Model.Tracing
 {
+    public enum TracerValueState
+    {
+        Created,
+        Updated,
+        Deleted
+    }
+
     //Hafızada tutulan nesnelerin süreç bilgisi,validasyonda kullanılır
     public class EntityTracer
     {
@@ -17,25 +24,34 @@ namespace WebKo.Model.Tracing
 
         public string Message { get; set; }
 
+        public LogType LogType { get; set; }
+
+        public TracerValueState? ValueState { get; set; }
+
+        public string PreviousValue { get; set; }
+
+        public string NewValue { get; set; }
+
         #endregion
 
         #region Constructor
 
         public EntityTracer() { }
 
-        public EntityTracer(string key,string message)
+        public EntityTracer(string key, string message, LogType logType =  LogType.Info, TracerValueState? valueState = null)
         {
             Key = key;
-            Message = message;
+            Message = valueState!=null ? valueState.ToString() : message;
+            LogType = valueState != null ? Model.General.LogType.Warning : logType;
         }
 
         #endregion
 
         #region Functions
 
-        public Log ToLog(LogType logType = LogType.Error)
+        public Log ToLog()
         {
-            return new Log(Entity.GetType().Name, Key, Message, logType, Entity.Id);
+            return new Log(Entity.GetType().Name, Key, Message, LogType, Entity.Id);
         }
 
         //dil desteği lazım
@@ -65,6 +81,11 @@ namespace WebKo.Model.Tracing
             {
                 Log.Create(log);
             }
+        }
+
+        public void Save()
+        {
+            Log.Create(ToLog());
         }
 
         #endregion

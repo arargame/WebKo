@@ -1,0 +1,15 @@
+﻿-CustomExtensions.cs StringExtension yapıldı 1.1.2019
+	ToEnum fonksiyonu yapıldı,String ifadelerden enuma çevirimlerde kullanılmak üzere
+-Entity Tracer lar Log olarak kaydedilecek(istenilirse)
+	Team Players bağlandı gibisinden
+-Resource Log'dan türetildi
+	eski ve yeni değer alanları eklendi
+	TracerValueState
+    {
+        Created,
+        Changed,
+        Deleted
+	}
+	enum alanı eklendi.Log üzerinde Description alanına yazılacak.
+-VAlidator MVC controllerından kulllanıklacak,EntityTracer bir nesne için her türlü adımı tutacak fakat kaydetme kısmı istenildiği zaman olacak
+Resource olayı dil desteği sağlıyor,nesnenin bir alanı dğeiştirildiğinde EntityTracer üzerinden yürütülecek bunların hepsi Log olarak veri tabanında tutulacak

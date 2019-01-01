@@ -8,3 +8,5 @@
 -Loglar ado.net üzreine oluşacak sıkıntılardada dosyaya yazması gerekiyor
 -Kullanıcının local culture info sunu kruma buna göre bişeyler inşa etme,başta belirlenebilmesi ardından değiştirlebilir bir yapısı olması lazım
 -kaydı kim güncelledi kim sildi bilgisi lazım,entitytracer da yapılabilir mi ?
+-https://www.youtube.com/watch?v=FI3coI6yMhM Encryption mevzuları
+-
