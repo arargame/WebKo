@@ -20,10 +20,6 @@ namespace WebKo.Model.Localization
     public class Resource : Log
     {
         #region Properties
-        
-        public string PropertyName { get; set; }
-
-        public Guid? EntityId { get; set; }
 
         public string Value { get; set; }
 
@@ -40,6 +36,20 @@ namespace WebKo.Model.Localization
         #endregion
 
         #region Constructor
+
+        public Resource() { }
+
+        public Resource(Entity entity,string propertyName,string value,string cultureInfoName)
+        {
+            Category = entity.GetType().Name;
+            Name = propertyName;
+            Value = value;
+            CultureInfoName = cultureInfoName;
+        }
+
+        #endregion
+
+        #region Functions
 
         public Resource SetCultureInfoName(string cultureInfoName)
         {

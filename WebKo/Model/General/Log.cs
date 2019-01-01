@@ -14,7 +14,7 @@ namespace WebKo.Model.General
 
     public class Log : Entity
     {
-        public virtual Entity BaseObject { get; set; }
+        public virtual Entity Entity { get; set; }
 
         public string Category { get; set; }
 
