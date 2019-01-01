@@ -34,8 +34,8 @@ namespace WebKo.Model.Validation
         {
             Entity.CheckIfItIsValid();
 
-            if (willBeSaved && Entity.IsValid)
-                EntityTracer.Save(Entity, predicate);
+            //if (willBeSaved && Entity.IsValid)
+            //    EntityTracer.Save(Entity, predicate);
 
             return Entity.IsValid;
         }
