@@ -35,13 +35,6 @@ namespace WebKo.Model.General
 
 
 
-        //string RecorderInfo { get; set; }
-
-        //DateTime? RecordDate { get; set; }
-
-        //string UpdaterInfo { get; set; }
-
-        //DateTime? UpdateDate { get; set; }
 
         ICollection<Log> Logs { get; set; }
         List<EntityTracer> EntityTracers { get; set; }
