@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using WebKo.Model.General;
+using WebKo.Settings;
 
 namespace WebKo.Model.Localization
 {
@@ -16,11 +17,9 @@ namespace WebKo.Model.Localization
     /// Key-Value şeklinde olanlar ile id si şu olan şu tipten nesnenin alanının çeviriside sunulacak
     /// </summary>
 
-    public class Resource : Entity
+    public class Resource : Log
     {
-        public string PropertyName { get; set; }
-
-        public Guid? EntityId { get; set; }
+        #region Properties
 
         public string Value { get; set; }
 
@@ -33,5 +32,32 @@ namespace WebKo.Model.Localization
                 return CultureInfo.GetCultureInfo(CultureInfoName);
             }
         }
+
+        #endregion
+
+        #region Constructor
+
+        public Resource() { }
+
+        public Resource(Entity entity,string propertyName,string value,string cultureInfoName)
+        {
+            Category = entity.GetType().Name;
+            Name = propertyName;
+            Value = value;
+            CultureInfoName = cultureInfoName;
+        }
+
+        #endregion
+
+        #region Functions
+
+        public Resource SetCultureInfoName(string cultureInfoName)
+        {
+            CultureInfoName = cultureInfoName;
+
+            return this;
+        }
+
+        #endregion
     }
 }
