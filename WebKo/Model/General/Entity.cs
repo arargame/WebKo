@@ -33,10 +33,8 @@ namespace WebKo.Model.General
 
         //string LogId { get; set; }
 
-
-
-
         ICollection<Log> Logs { get; set; }
+
         List<EntityTracer> EntityTracers { get; set; }
 
         //string Platform { get; set; }
@@ -97,6 +95,7 @@ namespace WebKo.Model.General
         #endregion
 
         #region Collections
+        [NotMapped]
         public virtual ICollection<Log> Logs { get; set; }
 
         [NotMapped]
@@ -117,6 +116,8 @@ namespace WebKo.Model.General
 
             Id = Guid.NewGuid();
 
+            Logs = new List<Log>();
+
             EntityTracers = new List<EntityTracer>();
 
             return this;
@@ -126,6 +127,7 @@ namespace WebKo.Model.General
         {
             return IsValid;
         }
+
         public void AddEntityTracer(EntityTracer entityTracer)
         {
             EntityTracers.Add(entityTracer);

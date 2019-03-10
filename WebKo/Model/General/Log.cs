@@ -1,10 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Text;
 
 namespace WebKo.Model.General
 {
+    public interface ILog : IEntity
+    {
+        Guid? EntityId { get; set; }
+        Entity Entity { get; set; }
+        LogType LogType { get; set; }
+        string Category { get; set; }
+    }
+
     public enum LogType
     {
         Error,
@@ -12,9 +21,12 @@ namespace WebKo.Model.General
         Warning
     }
 
-    public class Log : Entity
+    public class Log : Entity , ILog
     {
-        public virtual Entity BaseObject { get; set; }
+        public Guid? EntityId { get; set; }
+
+        [NotMapped]
+        public virtual Entity Entity { get; set; }
 
         public string Category { get; set; }
 
@@ -49,6 +61,8 @@ namespace WebKo.Model.General
             LogType = logType;
             //ObjectId = objectId;
         }
+
+        public Log() { }
 
         public static void Create(string description, LogType logType = LogType.Error, Guid? objectId = null)
         {

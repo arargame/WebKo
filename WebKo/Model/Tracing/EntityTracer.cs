@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using WebKo.Model.General;
 using System.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebKo.Model.Tracing
 {
     //Hafızada tutulan nesnelerin süreç bilgisi,validasyonda kullanılır
+    [NotMapped]
     public class EntityTracer
     {
         #region Properties
